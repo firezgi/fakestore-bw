@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import AmountButtons from './AmountButtons'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { useCartContext } from '../context/cart_context'
+import CurrencyFormat from "react-currency-format";
 const CartItem = ({ id, image, title,  price, amount }) => {
   const { removeItem, toggleAmount } = useCartContext()
   const increase = () => {
@@ -12,27 +13,41 @@ const CartItem = ({ id, image, title,  price, amount }) => {
     toggleAmount(id, 'dec')
   }
   return (
-    
-      <Wrapper>
-        <div className="title">
-          <img src={image} alt={title} />
-          <div>
-            <h5 className="name">{title}</h5>
+    <CurrencyFormat
+      renderText={(value) => (
+        <Wrapper>
+          <div className="title">
+            <img src={image} alt={title} />
+            <div>
+              <h5 className="name">{title}</h5>
 
-            <h5 className="price-small">{price}</h5>
+              <h5 className="price-small">{value}</h5>
+            </div>
           </div>
-        </div>
-        <h5 className="price">{price}</h5>
-        <AmountButtons
-          amount={amount}
-          increase={increase}
-          decrease={decrease}
-        />
-        <h5 className="subtotal">{price * amount}</h5>
-        <button style={{backgroundColor:"blueViolet"}} className="remove-btn" onClick={() => removeItem(id)}>
-          <RiDeleteBin6Line />
-        </button>
-      </Wrapper>
+          <h5 className="price">{value}</h5>
+          <AmountButtons
+            amount={amount}
+            increase={increase}
+            decrease={decrease}
+          />
+      
+          <h5 className="subtotal">$
+            {price * amount} </h5>
+          <button
+            style={{ backgroundColor: "blueViolet" }}
+            className="remove-btn"
+            onClick={() => removeItem(id)}
+          >
+            <RiDeleteBin6Line />
+          </button>
+        </Wrapper>
+      )}
+      decimalScale={2}
+      value={price}
+      displayType={"text"}
+      thousandSeparator={true}
+      prefix={"$"}
+    />
   );
 }
 

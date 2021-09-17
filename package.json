@@ -1,4 +1,5 @@
 {
+  "homepage": "https://keshi2021.github.io/fakestore-bw",
   "name": "store",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +14,7 @@
     "dotenv": "^8.2.0",
     "netlify": "^6.0.12",
     "react": "^17.0.1",
+    "react-currency-format": "^1.0.0",
     "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
@@ -22,6 +24,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "hg-pages -d build",
     "start": "react-scripts start",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
@@ -44,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

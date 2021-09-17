@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams} from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { single_product_url as url } from '../utils/constants'
+import CurrencyFormat from "react-currency-format";
 import {
   Loading,
   Error,
@@ -30,29 +31,40 @@ const SingleProductPage = () => {
     return <Error />
   }
 
-  const {
-    title,
-    price,
-    description,
-    image,
-  } = product
+  const {title,price,description,image,} = product
   return (
-    <Wrapper>
-      <div className="section section-center page">
-        <Link to="/products" style={{ backgroundColor: "black",padding:"10px",borderRedius:"200%" }}>
-          back to products
-        </Link>
-        <div className="product-center">
-          <section className="content">
-            <h2>{title}</h2>
-            <h5 className="price">{price}</h5>
-            <p className="desc">{description}</p>
-            {<AddToCart product={product} />}
-          </section>
-          <img src={image} alt="" />
-        </div>
-      </div>
-    </Wrapper>
+    <CurrencyFormat
+      renderText={(value) => (
+        <Wrapper>
+          <div className="section section-center page">
+            <Link
+              to="/products"
+              style={{
+                backgroundColor: "black",
+                padding: "10px",
+                borderRedius: "200%",
+              }}
+            >
+              back to products
+            </Link>
+            <div className="product-center">
+              <section className="content">
+                <h2>{title}</h2>
+                <h5 className="price">{value}</h5>
+                <p className="desc">{description}</p>
+                {<AddToCart product={product} />}
+              </section>
+              <img src={image} alt="" />
+            </div>
+          </div>
+        </Wrapper>
+      )}
+      decimalScale={2}
+      value={price}
+      displayType={"text"}
+      thousandSeparator={true}
+      prefix={"$"}
+    />
   );
 }
 

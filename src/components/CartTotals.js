@@ -1,17 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
-
+import CurrencyFormat from "react-currency-format";
 const CartTotals = () => {
   const { total_amount} = useCartContext()
 
   return (
-    <Wrapper>
-          <h4 style={{margin:"0px 120px"}}>
-            order total :<span>{total_amount }</span>
+    <CurrencyFormat
+      renderText={(value) => (
+        <Wrapper>
+          <h4 style={{ margin: "0px 120px" }}>
+            order total :<span>{value}</span>
           </h4>
-    </Wrapper>
-  )
+        </Wrapper>
+      )}
+      decimalScale={2}
+      value={total_amount}
+      displayType={"text"}
+      thousandSeparator={true}
+      prefix={"$"}
+    />
+  );
+  
 }
 
 const Wrapper = styled.section`
