@@ -39,11 +39,11 @@ const SingleProductPage = () => {
           <div className="section section-center page">
             <Link
               to="/products"
-              style={{
-                backgroundColor: "black",
-                padding: "10px",
-                borderRedius: "200%",
-              }}
+              // style={{
+              //   backgroundColor: "black",
+              //   padding: "10px",
+              //   borderRedius: "200%",
+              // }}
             >
               back to products
             </Link>
