@@ -11,12 +11,11 @@ const Search = () => {
         aria-label="search"
         class="px2 py1"
         placeholder="🔍 Search product/s"
-        // value=""
         style={{
           padding: "10px",
           width: "200px",
           fontSize: "20px",
-          backgroundColor: "blueViolet",
+          backgroundColor: "grey",
           color: "black",
         }}
         onChange={(e) => {

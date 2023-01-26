@@ -15,7 +15,7 @@ const Sort = () => {
           value={sort}
           onChange={updateSort}
           className="sort-input"
-          style={{ backgroundColor: "blueViolet" }}
+          style={{ backgroundColor: "grey" }}
         >
           <option value="name-a">name (a - z)</option>
           <option value="name-z">name (z - a)</option>
